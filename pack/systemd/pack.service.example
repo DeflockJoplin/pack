@@ -1,0 +1,22 @@
+# Example systemd unit for PACK (wardriving daemon).
+# Copy to /etc/systemd/system/pack.service and adjust paths.
+#
+# This release: run pack as root for WiFi capture (monitor mode + channel hop).
+
+[Unit]
+Description=PACK wardriving daemon
+After=network.target gpsd.service bluetooth.service
+Wants=gpsd.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/lib/pack
+Environment=PACK_DATA=/var/lib/pack/data
+ExecStart=/opt/pack/pack
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

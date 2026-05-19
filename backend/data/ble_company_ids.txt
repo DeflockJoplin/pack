@@ -1,0 +1,14 @@
+# 16-bit company ID (hex) TAB vendor name — extends built-in BLE lookup via build.rs.
+# Source: operator-maintained; align with Bluetooth SIG Assigned Numbers when expanding.
+004C	Apple
+0006	Microsoft
+000F	Broadcom
+0075	Samsung
+0180	Google
+0059	Nordic Semiconductor
+02A6	Microsoft
+0157	Huawei
+001D	Qualcomm
+0078	Roku
+00A0	Intel
+09C8	Telink / Xuntong

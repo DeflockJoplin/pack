@@ -1,0 +1,51 @@
+{
+  "inputs": [
+    "data/test/fixture_drive_a.pcap",
+    "data/test/fixture_drive_b.pcap",
+    "data/test/fixture_flock_2g_01.pcapng",
+    "data/test/fixture_flock_5g_01.pcapng",
+    "data/test/fixture_flock_linux_wildcard_01.pcapng",
+    "data/test/fixture_control_1.pcap",
+    "data/test/fixture_control_2.pcap",
+    "data/test/probe_0.pcap",
+    "data/test/probe_2.pcap",
+    "data/test/probe_3.pcap",
+    "data/test/raw_0.pcap",
+    "data/test/raw_1.pcap",
+    "data/test/raw_2.pcap",
+    "data/test/raw_3.pcap",
+    "data/test/raw_4.pcap",
+    "data/test/raw_5.pcap"
+  ],
+  "flock_oui_only": true,
+  "strict_ssid_ie_only": false,
+  "wildcard_probe_frames_matched": 441,
+  "explicit_zero_length_ssid_ie": 17,
+  "implicit_wildcard_no_ssid_ie": 424,
+  "distinct_ie_signatures": 3,
+  "clusters": [
+    {
+      "ie_sig": "2,12,127,221:506f9a16030103,45,191,221:0050f208000000",
+      "wildcard_probe_frames": 424,
+      "example_macs": [
+        "d0:39:57:00:00:01",
+        "d0:39:57:00:00:02",
+        "f4:6a:dd:00:00:01"
+      ]
+    },
+    {
+      "ie_sig": "12,221:506f9a16030103,45,191,221:0050f208000000",
+      "wildcard_probe_frames": 16,
+      "example_macs": [
+        "d0:39:57:00:00:01"
+      ]
+    },
+    {
+      "ie_sig": "2,12",
+      "wildcard_probe_frames": 1,
+      "example_macs": [
+        "08:3a:88:00:00:01"
+      ]
+    }
+  ]
+}

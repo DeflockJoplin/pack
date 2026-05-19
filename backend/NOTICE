@@ -1,0 +1,18 @@
+# PACK
+
+Copyright (c) 2026 DeFlock Joplin
+
+Licensed under the MIT License; see the repository root `LICENSE` file.
+
+# Generated lookup tables (build time)
+
+The PACK build generates Rust sources under the Cargo `OUT_DIR` from checked-in tables:
+
+- `oui_generated.rs` — from `data/oui_prefixes.txt` plus optional `data/oui_overrides.txt` (same format; overrides win on duplicate OUIs; see `docs/OUI_DATA.md`).
+- `ble_company_generated.rs` — from `data/ble_company_ids.txt` (16-bit Bluetooth company identifiers; see `docs/FINGERPRINTING.md`).
+
+Edit those data files (not the generated `.rs` output) and rebuild to refresh assignments.
+
+# IEEE Registration Authority data
+
+`data/oui_prefixes.txt` and the embedded `oui_generated.rs` vendor strings are **Organization Name** fields from the IEEE MA-L listing used by `scripts/update-oui-from-ieee.sh`. They are **not** covered by the MIT License. Use and redistribution must comply with [IEEE Registration Authority](https://standards.ieee.org/products-programs/regauth/) terms for the listing you download when regenerating the file. See `docs/OUI_DATA.md`. PACK is not affiliated with or endorsed by IEEE.
