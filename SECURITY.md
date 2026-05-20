@@ -10,4 +10,4 @@ The default HTTP bind is `127.0.0.1:8787`. If you listen on `0.0.0.0`, hosts on 
 
 ## Reporting issues
 
-Report security vulnerabilities through your project’s preferred private channel (for example GitHub Security Advisories on the repository, or contact the maintainers directly). Include steps to reproduce and impact if known.
+Report security vulnerabilities by contacting the maintainers directly. Include steps to reproduce and impact if known.

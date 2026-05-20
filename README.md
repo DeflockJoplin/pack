@@ -9,7 +9,7 @@ Any such use is not condoned by the maintainer(s).  Modification of the software
 
 ## Status
 
-Many of the features are WIP or experimental. What is definitely working well today is: Wardriving, Flock Detection, Logging, Uploads, and Home Zone. All other features should be considered in progress and unfinished.
+Many of the features are WIP or experimental. What is definitely working well today is: Wardriving, Flock Detection, Logging, Uploads, and Home Zone. All other features should be considered in progress and unfinished.  All field testing was done on Kali Linux.
 
 
 # P.A.C.K. — Passive Acquisition & Capture Kit
@@ -18,7 +18,7 @@ Many of the features are WIP or experimental. What is definitely working well to
 
 Flock detection is powered by a new detection method developed for this repo (method #3 in the code).  It looks for wildcard probes and matches unique combinations of IE fields that Flock cameras advertise. Other detection methods are included for reference and testing.  Credit for those detection methods and research goes to the original developers of those methods.
 
-This repository is a **Rust** backend (`pack`) plus a **React + Vite** frontend. A **React + Vite** dashboard lives under `frontend/`; build `frontend/dist/` before first run (see [PUBLIC_SOURCE.md](PUBLIC_SOURCE.md) and [docs/FRONTEND_DEVELOPMENT.md](docs/FRONTEND_DEVELOPMENT.md)). To change the UI or use hot reload, see **[docs/FRONTEND_DEVELOPMENT.md](docs/FRONTEND_DEVELOPMENT.md)**.
+This repository is a **Rust** backend (`pack`) plus a **React + Vite** frontend. A **React + Vite** dashboard lives under `frontend/`; build `frontend/dist/` before first run and [docs/FRONTEND_DEVELOPMENT.md](docs/FRONTEND_DEVELOPMENT.md)). To change the UI or use hot reload, see **[docs/FRONTEND_DEVELOPMENT.md](docs/FRONTEND_DEVELOPMENT.md)**.
 
 **Platform:** Linux only.
 
@@ -65,12 +65,19 @@ You do **not** need Docker or a cloud account for a basic local wardriving and a
 
 ## Quick start
 
-Assumes you already have [system packages](#install-system-packages-from-zero) and [Rust](#install-rust-from-zero):
+Assumes you already have [system packages](#install-system-packages-from-zero) and [Rust](#install-rust-from-zero). Place your adapters in monitor mode (airmon-ng or similar) and then run:
 
 ```bash
 git clone <repository-url> LinuxWardriver
 cd LinuxWardriver
 cargo build -p pack --release
+
+cd frontend
+npm install
+npm ci
+npm run build
+
+cd ..
 sudo ./target/release/pack
 ```
 
@@ -102,7 +109,15 @@ sudo apt install -y \
   libpcap-dev \
   libssl-dev \
   iw \
-  ca-certificates
+  ca-certificates \
+  gpsd \
+  gpsd-clients \
+  bluez
+```
+Enable/start Bluetooth if you use BLE:
+
+```bash
+sudo systemctl enable --now bluetooth
 ```
 
 - **`build-essential`**: `gcc`, `g++`, `make`.  
@@ -113,38 +128,7 @@ sudo apt install -y \
 - **`iw`**: Used at runtime to set channels on WiFi interfaces.  
 - **`git`**, **`curl`**: Clone repo and download installers.
 
-### 3) Optional runtime services (recommended for full features)
 
-```bash
-sudo apt install -y gpsd gpsd-clients bluez
-```
-
-Enable/start Bluetooth if you use BLE:
-
-```bash
-sudo systemctl enable --now bluetooth
-```
-
-### Fedora / RHEL-style (quick mapping)
-
-```bash
-sudo dnf install -y gcc gcc-c++ make cmake pkgconf-pkg-config git curl \
-  libpcap-devel openssl-devel iw ca-certificates
-# optional:
-sudo dnf install -y gpsd bluez
-```
-
-### Arch Linux (quick mapping)
-
-```bash
-sudo pacman -S --needed base-devel cmake pkgconf git curl libpcap openssl iw
-# optional:
-sudo pacman -S --needed gpsd bluez bluez-utils
-```
-
-If `cargo build` later errors about a missing system library, install the `-dev` / `-devel` package for that library and retry.
-
----
 
 ## Install Rust (from zero)
 
