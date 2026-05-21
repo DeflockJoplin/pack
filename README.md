@@ -68,8 +68,8 @@ You do **not** need Docker or a cloud account for a basic local wardriving and a
 Assumes you already have [system packages](#install-system-packages-from-zero) and [Rust](#install-rust-from-zero). Place your adapters in monitor mode (airmon-ng or similar) and then run:
 
 ```bash
-git clone <repository-url> LinuxWardriver
-cd LinuxWardriver
+git clone https://github.com/DeflockJoplin/pack pack
+cd pack
 cargo build -p pack --release
 
 cd frontend
